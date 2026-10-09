@@ -25,7 +25,7 @@ public class PatientTests {
     @Test
     public void testPatientRepository() {
         
-        List<Patient> patientList = patientRepository.findAll();
+        List<Patient> patientList = patientRepository.findAllPatientWithAppointment();
         System.out.println(patientList);
     }
     
@@ -78,11 +78,11 @@ public class PatientTests {
 //            System.out.println(bloodGroupCountResponseDto);
 //        }
         
-        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 2, Sort.by("birth_date")));
-
-        for (Patient patient : patientList) {
-            System.out.println(patient);
-        }
+//        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(0, 2, Sort.by("birth_date")));
+//
+//        for (Patient patient : patientList) {
+//            System.out.println(patient);
+//        }
     
     }
 }

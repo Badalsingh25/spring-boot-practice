@@ -63,5 +63,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT new com.codingshuttle.youtube.hospitalManagement.dto.BloodGroupCountResponseDto(p.bloodGroup, COUNT(p)) From Patient p GROUP BY p.bloodGroup")
     List<BloodGroupCountResponseDto> countEachBloodGroupType();
     
+    @Query("SELECT p  FROM Patient p LEFT JOIN FETCH p.appointments")
+    List<Patient> findAllPatientWithAppointment();
     
 }

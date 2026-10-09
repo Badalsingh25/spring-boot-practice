@@ -10,8 +10,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Insurance {
     
     @Id
@@ -32,6 +34,7 @@ public class Insurance {
     private LocalDateTime createdAt;
     
     @OneToOne(mappedBy = "insurance")
+    @ToString.Exclude
     private Patient patient;
     
 }

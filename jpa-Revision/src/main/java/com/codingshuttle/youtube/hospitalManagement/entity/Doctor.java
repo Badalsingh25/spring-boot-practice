@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,13 +28,15 @@ public class Doctor {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
     
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @ToString.Exclude
     private List<Appointment> appointments = new ArrayList<>();
     
     @OneToOne(mappedBy = "headDoctor")
     private Department department;
     
     @ManyToMany(mappedBy = "doctors")
+    @ToString.Exclude
     private List<Department> departments = new ArrayList<>();
     
     

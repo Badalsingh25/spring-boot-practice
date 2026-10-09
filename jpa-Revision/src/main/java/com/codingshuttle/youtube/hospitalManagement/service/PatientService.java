@@ -13,7 +13,7 @@ public class PatientService {
     private final PatientRepository patientRepository;
     
     @Transactional
-    public Patient getPatientById(Long id){
+    public Patient getPatientById(Long id) {
         Patient p1 = patientRepository.findById(id).orElseThrow();
         Patient p2 = patientRepository.findById(id).orElseThrow();
         
@@ -21,8 +21,15 @@ public class PatientService {
         
         p1.setEmail("badalkusingh8@gmail.com");
         p1.setName("Badal Singh");
-        
+
 //        patientRepository.save(p1); // No need to save the data, @Transactional automatically committed the data
         return p1;
+    }
+    
+    public void deletePatient(Long patientId) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new IllegalArgumentException("Patient not found with id : " + patientId));
+        
+        patientRepository.delete(patient);
     }
 }
