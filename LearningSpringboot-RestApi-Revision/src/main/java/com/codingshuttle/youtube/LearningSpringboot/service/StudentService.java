@@ -21,4 +21,5 @@ public interface StudentService {
     StudentDto updateStudent(Long id, AddStudentRequestDto addStudentRequestDto);
     
     @Nullable StudentDto updatePartialStudent(Long id, Map<String, Object> updates);
+    
 }

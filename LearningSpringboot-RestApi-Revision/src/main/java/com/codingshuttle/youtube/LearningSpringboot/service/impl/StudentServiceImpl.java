@@ -26,8 +26,10 @@ public class StudentServiceImpl implements StudentService {
         List<Student> students = studentRepository.findAll();
         return students
                 .stream()
-                .map(student -> modelMapper.map(student, StudentDto.class)).toList();
+                .map(student -> modelMapper.map(student, StudentDto.class))
+                .toList();
     }
+
     
     @Override
     public StudentDto getStudentById(Long id) {
